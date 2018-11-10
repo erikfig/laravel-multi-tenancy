@@ -1,0 +1,29 @@
+{
+    "name": "erikfig/laravel-tenancy",
+    "description": "Multi tenancy package for Laravel",
+    "type": "laravel",
+    "keywords": ["library", "tenancy", "laravel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Erik Figueiredo",
+            "email": "erik.figueiredo@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ErikFig\\Laravel\\Tenancy\\": "app/"
+        },
+        "files": ["helpers.php"]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ErikFig\\Laravel\\Tenancy\\Providers\\TenancyServiceProvider"
+            ]
+        }
+    }
+}
