@@ -215,3 +215,5 @@ O atributo `tenancies` é um `belongsToMany`, então fique a vontade, rsrs.
 ## Contribuir
 
 Mande seu PR!
+
+Para ver/sugerir recursos/bugs use o [Issues](https://github.com/erikfig/laravel-multi-tenancy/issues).
