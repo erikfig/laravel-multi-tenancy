@@ -2,6 +2,8 @@
 
 Este pacote permite que você crie aplicações para multiplos clientes com mínimas alterações na sua aplicação.
 
+Status: Desenvolvimento
+
 ## Instalação
 
 Primeiramente instale o pacote:
