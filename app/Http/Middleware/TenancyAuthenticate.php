@@ -16,6 +16,7 @@ class TenancyAuthenticate
      */
     public function handle($request, Closure $next, $role = null)
     {
+        $tenancy = Tenancy::where('route', get_subdomain())->firstOrFail();
         $user = Auth::user();
 
         if (!$user) {

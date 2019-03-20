@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User;
 
 class Tenancy extends Model
 {
+    protected $fillable = ['title', 'route', 'role', 'user_id', 'tenancy_id'];
+    
     public function users()
     {
         return $this->belongsToMany(config('tenancy.userModel'), 'tenancy_users', 'tenancy_id', 'user_id');
