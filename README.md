@@ -1,29 +1,29 @@
 # Laravel Multi-Tenancy
 
-Este pacote permite que você crie aplicações para multiplos clientes com mínimas alterações na sua aplicação.
+This package allows you to create applications for multiple customers with minimal changes in your application
+Status: Development
 
-Status: Desenvolvimento
+## Install
 
-## Instalação
-
-Primeiramente instale o pacote:
+First, install the package:
 
 ```
 composer require erikfig/laravel-tenancy
 ```
 
-Em seguida publique os arquivos de configuração:
+Then, publish it:
 
 ```
 php artisan vendor:publish --provider=ErikFig\Laravel\Tenancy\Providers\TenancyServiceProvider
 ```
 
-Os seguintes arquivos serão criados:
+It will be created 2 files:
 
  - config/tenancy.php
  - routes/tenancy.php
-
-Para finalizar crie as tabelas no banco de dados.
+ 
+ 
+After that, migrate to create the tables in your DB
 
 ```
 php artisan migrate
