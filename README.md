@@ -118,9 +118,9 @@ The table `pivot` will return on the pivot item when you request the data:
 \App\User::with('tenancies')->get()
 ```
 
-## Filtrar os registros de um model por subdominio
+## Filterign the model record's by sub domain
 
-O trait a seguir é capaz de lidar com cadastro e listagem de dados em cada subdomínio automaticamente, apenas inclua:
+The following trait is capable of to deal with data and list this informations in each sub domain automatically, you only need to include:
 
 ```
 <?php
@@ -137,7 +137,7 @@ class Product extends Model
 
 ```
 
-A filtragem acontece graças a um scope `tenancy`, então você pode lidar com isso normalmente.
+The filtering happens becaus of the scope `tenancy`, so you can handle with it normally.
 
 ```
 $all_products = \App\Product::withoutGlobalScope('tenancy)->get();
@@ -145,21 +145,21 @@ $all_products = \App\Product::withoutGlobalScope('tenancy)->get();
 
 ## Middleware
 
-O middleware restrige o acesso apenas aos usuários liberados no dominio atual.
+The middleware  only gives the acess to autorized users on the current domain
 
-Para usar adicione ao `app/Http/Kernel.php`, na variável `$routeMiddleware`:
+To use it, adds `app/Http/Kernel.php`, on the `$routeMiddleware` variable:
 
 ```
 'tenancy' => \ErikFig\Laravel\Tenancy\Http\Middleware\TenancyAuthenticate::class,
 ```
 
-Use em conjunto com o middleware de autenticação:
+Use it together with the authentication middleware:
 
 ```
 Route::middleware(['auth', 'tenancy'])->post('/tenancy', function () {
 ```
 
-Você também pode incluir os níveis de usuários que terão acesso as rotas:
+You also can adds the roles of the users, and where they can go:
 
 ```
 Route::middleware(['auth', 'tenancy'])->post('/tenancy', function () {
@@ -180,11 +180,12 @@ Route::middleware(['auth', 'tenancy:owner|employee'])->post('/tenancy', function
 
 ```
 
-## Gerenciando tenancies
+## Managing tenancies
 
-O tenancies seriam "as empresas", desta forma será possível você incluir multiplos usuários em multiplos tenancies.
+The tenancies seriam "as empresas", desta forma será possível você incluir multiplos usuários em multiplos tenancies.
 
-Para cadastrar um tenancy:
+To register one tenancy:
+
 
 ```
 use ErikFig\Laravel\Tenancy\Tenancy;
@@ -192,11 +193,10 @@ use ErikFig\Laravel\Tenancy\Tenancy;
 $owner = \Auth::user();
 Tenancy::newTenancy('Nome da empresa', 'subdominio', $owner);
 ```
+The user will get the "owner" role, you can filter the users by the type on the middleware.
 
-O usuário será incluído com o `role` (nível de acesso) owner (dono em inglês), você pode filtrar os usuários por tipo no middleware.
 
-Para adicionar um usuário em um tenancy:
-
+To adds an user on a tenancy:
 ```
 use ErikFig\Laravel\Tenancy\Tenancy;
 
@@ -206,16 +206,16 @@ $tenancy = Tenancy:where('route', get_subdomain())->first();
 $tenancy->attachUser($user, 'editor');
 ```
 
-O usuário logado recebe uma lista de tenancies aos quais foi cadastrado/criou:
+The logged user gets a list of tenancies wich it has been registered/created:
 
 ```
 dd($user->tenancies);
 ```
 
-O atributo `tenancies` é um `belongsToMany`, então fique a vontade, rsrs.
+The attribute `tenancies` is a `belongsToMany`, so feel free to use it
 
-## Contribuir
+## Contributions
 
-Mande seu PR!
+Send your PR!
 
-Para ver/sugerir recursos/bugs use o [Issues](https://github.com/erikfig/laravel-multi-tenancy/issues).
+ To see suggest features/bugs use the [Issues](https://github.com/erikfig/laravel-multi-tenancy/issues).
