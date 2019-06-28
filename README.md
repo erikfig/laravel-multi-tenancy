@@ -163,19 +163,19 @@ You also can adds the roles of the users, and where they can go:
 
 ```
 Route::middleware(['auth', 'tenancy'])->post('/tenancy', function () {
-    return 'todos os níveis acessam';
+    return 'Everyone gets the acess';
 });
 
 Route::middleware(['auth', 'tenancy:owner'])->post('/tenancy', function () {
-    return 'somente usuários com role owner acessam';
+    return 'only users with owner role can acess';
 });
 
 Route::middleware(['auth', 'tenancy:employee'])->post('/tenancy', function () {
-    return 'somente usuários com role employee acessam';
+    return 'only users with employee role can acess';
 });
 
 Route::middleware(['auth', 'tenancy:owner|employee'])->post('/tenancy', function () {
-    return 'somente usuários com role owner e employee acessam';
+    return 'only users with owner role and employee role can acess';
 });
 
 ```
