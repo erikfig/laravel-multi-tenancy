@@ -64,7 +64,7 @@ userModel: One string with name class (including namespace) of the model of auth
 
 ## Helper
 
-If in any momemt you need the actual sub domain, use:
+If in any momemt you need the current sub domain, use:
 
 ```
 get_subdomain();
