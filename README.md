@@ -29,13 +29,14 @@ After that, migrate to create the tables in your DB
 php artisan migrate
 ```
 
-## Rotas
+## Routes
 
-O novo arquivo de rotas (`routes/tenancy.php`) libera as rotas apenas em subdominios, excluindo `www` por padrão.
+The new routes file (`routes/tenancy.php`) allows only the sub domain routes, without the "www" by standard.
 
-Neste arquivo devem ficar as rotas que farão parte do seu projeto, desta forma ainda podemos ter rotas separadas para o domínio principal (para um site ou market place, quem sabe).
+On this file, it must have the routes that will be part of the your project, making separated routes for your main domain (for a site or  marketplace, for example)
 
-Este é o router padrão:
+
+This is the raw file:
 
 ```
 <?php
@@ -50,28 +51,29 @@ Route::get('/tenancy', function () {
 
 ```
 
-## Configurações
+## Configurations
 
-O arquivo `config/tenancy.php` possui os seguintes parâmetros:
+The file `config/tenancy.php` has this parameters:
 
 ```
-route_param: Nome do parâmetro do subdominio na rota, altere somente para evitar incompatibilidades.
-subdomains_pattern: Regex da url, exclui o `www` dos subdominios no formato padrão.
-domain: O domínio em que vai rodar o projeto (sem www), se o valor for null, vai usar o que estiver em `url` do `config/app.php`.
-userModel: Uma string com nome da classe (incluindo namespace) do model de autenticação (caso você tenha alterado o padrão)
+route_param: Name of the sub domain parameter, change it only to don't get incompatibilities
+subdomains_pattern: Regex of the url, removes the `www` from the subdomains.
+domain: The main domain of the project (without www), if it gets NULL, it will use the `url` of `config/app.php`.
+userModel: One string with name class (including namespace) of the model of authentication (In case you changed the default).
 ```
 
 ## Helper
 
-Se em algum momento precisar do sudominio atual use:
+If in any momemt you need the actual sub domain, use:
 
 ```
 get_subdomain();
 ```
 
-## Configurar o model de autenticação
+## Configurating the model of authentication
 
-Para configurar o model de autenticação (normalmente o App\User), adicione o trait `ErikFig\Laravel\Tenancy\UserTenancyTrait`:
+To configurate the model (normally on App\User) , add the trait
+`ErikFig\Laravel\Tenancy\UserTenancyTrait`:
 
 ```
 <?php
@@ -110,7 +112,7 @@ class User extends Authenticatable
 
 ```
 
-A tabela `pivot` já vai trazer as permissões no item pivot quando você solicitar os dados:
+The table `pivot` will return on the pivot item when you request the data:
 
 ```
 \App\User::with('tenancies')->get()
